@@ -1,33 +1,24 @@
 ﻿title: CiviDraw
 description: "토목 설계 자동화를 위한 CAD · Excel · HWP 솔루션"
 url: "https://jong0342.github.io"
-baseurl: "" # 사용자/Organization 페이지이면 공백 유지
+baseurl: ""
 
-# 빌드 옵션
 markdown: kramdown
 kramdown:
   input: GFM
 
-# 퍼멀링크
 permalink: /:categories/:title/
 
-# 정적 자산
-sass:
-  style: compressed
-
-# 플러그인
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# 사이트맵 기본
 defaults:
   - scope:
       path: ""
     values:
       sitemap: true
 
-# 제외 목록
 exclude:
   - README.md
   - node_modules

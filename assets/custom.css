@@ -1,7 +1,7 @@
-/* 컨테이너 폭 */
+/* 레이아웃 */
 .container { max-width: 980px; margin: 0 auto; padding: 24px 16px; }
 
-/* 헤더 바 */
+/* 헤더 */
 .site-header { background:#0f2339; color:#fff; }
 .site-header a { color:#fff; text-decoration:none; }
 
@@ -11,7 +11,7 @@
 .cta-row a:first-child { background:#0f2339; color:#fff; }
 .cta-row a:hover { opacity:.9; }
 
-/* 본문 타이포 */
+/* 본문 */
 .content h1 { margin-top: 8px; }
 .content p, .content li { line-height:1.7; }
 

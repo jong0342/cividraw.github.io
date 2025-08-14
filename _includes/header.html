@@ -1,15 +1,17 @@
-<header class="site-header" role="banner">
-  <div class="wrapper">
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
-      <img src="{{ '/cividraw_logo.ico' | relative_url }}" alt="CiviDraw Logo" style="height:24px; vertical-align:middle; margin-right:8px;">
-      {{ site.title | escape }}
-    </a>
-    <nav class="site-nav">
-      {% for my_page in site.pages %}
-        {% if my_page.title %}
-          <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title }}</a>
-        {% endif %}
-      {% endfor %}
-    </nav>
-  </div>
-</header>
+<header class="site-header">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:48px;">
+      <a href="{{ '/' | relative_url }}" class="brand" style="display:flex;align-items:center;gap:8px;">
+        <img src="{{ '/cividraw_logo.ico' | relative_url }}" alt="CiviDraw" width="20" height="20">
+        <strong>CiviDraw</strong>
+      </a>
+      <nav>
+        <ul style="display:flex;gap:16px;list-style:none;margin:0;padding:0;">
+          <li><a href="{{ '/docs/features' | relative_url }}">기능</a></li>
+          <li><a href="{{ '/docs/install' | relative_url }}">설치 안내</a></li>
+          <li><a href="{{ '/docs/pricing' | relative_url }}">가격</a></li>
+          <li><a href="{{ '/' | relative_url }}">CiviDraw</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  

@@ -5,7 +5,7 @@
 - 설치: https://jong0342.github.io/docs/install
 - 기능: https://jong0342.github.io/docs/features
 - 가격: https://jong0342.github.io/docs/pricing
-- 다운로드: https://github.com/jong0342/jong0342.github.io/releases
+- 다운로드: https://github.com/jong0342/jong0342.github.io/archive/refs/heads/main.zip
 - 문의: you@example.com
 
 ## 로컬 빌드
