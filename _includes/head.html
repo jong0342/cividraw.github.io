@@ -1,43 +1,56 @@
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <title>{{ page.title | default: site.title }}</title>
-    <meta name="description" content="{{ page.description | default: site.description }}">
-  
-    <!-- Open Graph -->
-    <meta property="og:title" content="{{ page.title | default: site.title }}">
-    <meta property="og:description" content="{{ page.description | default: site.description }}">
-    <meta property="og:image" content="{{ site.url }}/assets/cividraw_logo.png">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:type" content="website">
-  
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ page.title | default: site.title }}">
-    <meta name="twitter:description" content="{{ page.description | default: site.description }}">
-    <meta name="twitter:image" content="{{ site.url }}/assets/cividraw_logo.png">
-  
-    <!-- Favicon -->
-    <link rel="icon" href="/cividraw_logo.ico" type="image/x-icon">
-  
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
-  
-    {% seo %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- GA4 base loader -->
-    {% if site.google_analytics and site.google_analytics != "G-XXXXXXX" %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', '{{ site.google_analytics }}', { send_page_view: true });
-    </script>
-    {% endif %}
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
 
-    <!-- GA4 event bindings -->
-    <script defer src="{{ '/assets/ga-events.js' | relative_url }}"></script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:image" content="{{ site.url }}/assets/cividraw_logo.png">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+  <meta name="twitter:image" content="{{ site.url }}/assets/cividraw_logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ '/cividraw_logo.ico' | relative_url }}" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
+
+  {% seo %}
+
+  {% if site.google_analytics and site.google_analytics != "G-XXXXXXX" %}
+  <!-- GA4 base -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // 강제 디버그모드: URL에 ?debug=1 이면 켠다
+    (function(){
+      var qs = new URLSearchParams(location.search);
+      var debugOn = qs.get('debug') === '1' || localStorage.getItem('ga4_debug') === '1';
+      gtag('config', '{{ site.google_analytics }}', { send_page_view: true, debug_mode: !!debugOn });
+      if (debugOn) console.log('GA4 debug_mode = true');
+      // 콘솔 토글 함수 노출
+      window.__ga4_debug = function(on){ 
+        gtag('set', 'debug_mode', !!on); 
+        if(on){ localStorage.setItem('ga4_debug','1'); } else { localStorage.removeItem('ga4_debug'); }
+        console.log('GA4 debug_mode =', !!on);
+      };
+    })();
+  </script>
+  {% endif %}
+
+  <!-- GA4 event bindings -->
+  <script defer src="{{ '/assets/ga-events.js' | relative_url }}"></script>
 </head>
