@@ -1,51 +1,80 @@
----
-layout: default
-title: GA4 Demo
-permalink: /ga4-demo/
-description: GA4 이벤트 추적 테스트 페이지
----
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GA4 Demo</title>
 
-<h1>GA4 이벤트 추적 데모</h1>
+  <!-- GA4 태그 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BB7PYJSNK6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-<!-- 0. 디버그모드 토글 -->
-<button id="enable-debug" data-ga4-event="debug_toggle" data-ga4-label="enable_debug">디버그 모드 켜기</button>
+    // 항상 디버그 모드 ON
+    gtag('config', 'G-BB7PYJSNK6', { 'debug_mode': true });
+    gtag('set', 'debug_mode', true);
+    console.info("GA4 debug_mode = true");
+  </script>
+</head>
+<body>
+  <h1>GA4 Demo</h1>
+  <h2>GA4 이벤트 추적 데모</h2>
 
-<!-- 1. 명시적 이벤트 버튼 -->
-<button id="cta-install"
-        data-ga4-event="cta_click"
-        data-ga4-label="Install CTA">
-  설치하기 버튼 (명시적 이벤트)
-</button>
+  <button id="enable-debug">디버그 모두 켜기</button>
+  <button id="install-btn">설치하기 버튼 (명시적 이벤트)</button>
+  <button id="auto-btn">기본 버튼 (자동 click 이벤트)</button>
 
-<!-- 2. 일반 버튼 -->
-<button>기본 버튼 (자동 click 이벤트)</button>
+  <p><a href="assets/brochure.pdf" id="file-download" download>브로셔 다운로드 (file_download)</a></p>
+  <p><a href="https://example.com" target="_blank" id="outbound-link">외부 사이트 이동 (click_outbound)</a></p>
 
-<!-- 3. 파일 다운로드: 새 탭 + download 속성 -->
-<p>
-  <a href="/assets/brochure.pdf" target="_blank" rel="noopener" download>
-    브로셔 다운로드 (file_download)
-  </a>
-</p>
+  <form id="contact-form">
+    이메일: <input type="email" id="email">
+    <button type="submit">문의 보내기</button>
+  </form>
 
-<!-- 4. 아웃바운드 링크 -->
-<p><a href="https://example.com" target="_blank" rel="noopener">외부 사이트 이동 (click_outbound)</a></p>
+  <script>
+    // 공통 이벤트 전송 함수 (debug_mode 강제)
+    function sendGAEvent(name, params = {}) {
+      const finalParams = Object.assign({}, params, { debug_mode: true });
+      console.log(`[GA4] event → ${name}`, finalParams);
+      gtag('event', name, finalParams);
+    }
 
-<!-- 5. 폼 시작 및 제출: 실제 전송 차단 -->
-<form id="contact" name="ContactForm" action="#" method="get" data-demo="1">
-  <label>이메일: <input type="email" name="email" required></label>
-  <button type="submit">문의 보내기</button>
-</form>
+    // 디버그 토글 버튼
+    document.getElementById('enable-debug').addEventListener('click', () => {
+      gtag('set', 'debug_mode', true);
+      sendGAEvent('debug_toggle', { ui: 'button', location: 'ga4-demo' });
+    });
 
-<hr>
-<p>GA4 구성 › DebugView에서 이벤트 확인:
-<code>cta_click</code>, <code>click</code>, <code>file_download</code>,
-<code>click_outbound</code>, <code>form_start</code>, <code>form_submit</code>
-</p>
+    // 설치하기 버튼
+    document.getElementById('install-btn').addEventListener('click', () => {
+      sendGAEvent('cta_click', { label: 'Install CTA', category: 'ui', location: 'ga4-demo' });
+    });
 
-<script>
-  // 진입 시 ?debug=1이면 자동 디버그 켜기
-  window.addEventListener('load', function(){
-    var qs = new URLSearchParams(location.search);
-    if (qs.get('debug') === '1' && window.__ga4_debug) window.__ga4_debug(true);
-  });
-</script>
+    // 기본 버튼
+    document.getElementById('auto-btn').addEventListener('click', () => {
+      sendGAEvent('click', { label: '기본 버튼 (자동 click 이벤트)', category: 'button', location: 'ga4-demo' });
+    });
+
+    // 파일 다운로드
+    document.getElementById('file-download').addEventListener('click', (e) => {
+      sendGAEvent('file_download', { link_url: e.target.href });
+    });
+
+    // 외부 사이트 이동
+    document.getElementById('outbound-link').addEventListener('click', (e) => {
+      sendGAEvent('click_outbound', { link_url: e.target.href, link_host: e.target.hostname });
+    });
+
+    // 폼 제출
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      sendGAEvent('form_start', { form_id: 'contact_form' });
+      sendGAEvent('form_submit', { form_id: 'contact_form', email: document.getElementById('email').value });
+      alert("문의가 전송되었습니다.");
+    });
+  </script>
+</body>
+</html>
