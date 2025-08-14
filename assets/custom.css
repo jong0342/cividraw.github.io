@@ -1,31 +1,79 @@
-:root{--brand:#0a2342;--cta:#ff7f50}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto}
-.container{max-width:1040px;margin:0 auto;padding:0 16px}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #111;
+}
 
-/* header */
-.site-header{background:var(--brand);color:#fff}
-.site-header .container{display:flex;align-items:center;justify-content:space-between;height:56px}
-.logo{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700}
-.site-nav a{color:#fff;text-decoration:none;margin-left:16px}
-.site-nav .cta{background:var(--cta);padding:6px 12px;border-radius:6px}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-/* sections */
-main .container{padding:24px 16px}
-#hero{padding:56px 0;text-align:center;background:#f6f8fa;border-radius:8px;margin:16px 0}
-.hero-actions .btn{margin:0 8px}
-h1,h2{margin:0 0 12px}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{border:1px solid #e5e7eb;border-radius:8px;padding:16px;background:#fff}
-.steps{padding-left:18px}
+header {
+  background-color: #001F3F;
+  color: white;
+  padding: 1rem;
+}
 
-/* pricing */
-.price .price-tag{font-size:20px;font-weight:700}
+.site-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+  text-decoration: none;
+}
 
-/* buttons */
-.btn{display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none}
-.btn.primary{background:#2563eb;color:#fff}
-.btn.secondary{background:#6b7280;color:#fff}
+.site-nav ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  gap: 1rem;
+}
 
-/* footer */
-.site-footer{border-top:1px solid #eee;margin-top:32px;padding:16px 0;color:#6b7280}
+.site-nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #0074D9;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  margin: 0.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.feature-grid, .pricing-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
+}
+
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #0074D9;
+  color: white;
+  padding: 0.6rem;
+  border: none;
+  cursor: pointer;
+}

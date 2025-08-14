@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
-  {% include head.html %}
-<body>
-  {% include header.html %}
-  <main class="container">
-    {{ content }}
-  </main>
-  <footer class="site-footer">
-    <div class="container">
-      <small>© {{ "now" | date: "%Y" }} CiviDraw</small>
-    </div>
-  </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/custom.css" />
+  </head>
+  <body>
+    {% include header.html %}
+    <main class="container">
+      {{ content }}
+    </main>
+    <footer>
+      <p>© 2025 CiviDraw</p>
+    </footer>
+  </body>
 </html>
