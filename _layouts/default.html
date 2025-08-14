@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
   {% include head.html %}
-  <body>
-    {% include header.html %}
-    <main class="container">
-      <article class="content">
-        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
-        {{ content }}
-      </article>
-    </main>
-    <footer class="site-footer">
-      <div class="container">
-        <small>CiviDraw · 토목 설계 자동화 CAD/Excel/HWP 솔루션</small>
-      </div>
-    </footer>
-  </body>
+<body>
+  {% include header.html %}
+  <main class="container">
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <small>© {{ "now" | date: "%Y" }} CiviDraw</small>
+    </div>
+  </footer>
+</body>
 </html>
