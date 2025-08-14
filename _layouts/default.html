@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'ko' }}">
+<html lang="ko">
   {% include head.html %}
   <body>
     {% include header.html %}
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
+    <main class="container">
+      <article class="content">
+        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
         {{ content }}
-      </div>
+      </article>
     </main>
-    {% include footer.html %}
+    <footer class="site-footer">
+      <div class="container">
+        <small>CiviDraw · 토목 설계 자동화 CAD/Excel/HWP 솔루션</small>
+      </div>
+    </footer>
   </body>
 </html>
