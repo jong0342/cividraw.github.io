@@ -7,6 +7,9 @@ description: GA4 이벤트 추적 테스트 페이지
 
 <h1>GA4 이벤트 추적 데모</h1>
 
+<!-- 0. 디버그모드 토글 -->
+<button id="enable-debug" data-ga4-event="debug_toggle" data-ga4-label="enable_debug">디버그 모드 켜기</button>
+
 <!-- 1. 명시적 이벤트 버튼 -->
 <button id="cta-install"
         data-ga4-event="cta_click"
@@ -21,17 +24,29 @@ description: GA4 이벤트 추적 테스트 페이지
 <p><a href="/assets/brochure.pdf">브로셔 다운로드 (file_download)</a></p>
 
 <!-- 4. 아웃바운드 링크 -->
-<p><a href="https://example.com">외부 사이트 이동 (click_outbound)</a></p>
+<p><a href="https://example.com" target="_blank" rel="noopener">외부 사이트 이동 (click_outbound)</a></p>
 
 <!-- 5. 폼 시작 및 제출 -->
-<form id="contact" name="ContactForm" action="/thanks" method="post">
+<form id="contact" name="ContactForm" action="#" method="get" onsubmit="return false;">
   <label>이메일: <input type="email" name="email" required></label>
   <button type="submit">문의 보내기</button>
 </form>
 
 <hr>
-<p>
-GA4 실시간 > 디버그뷰에서 이벤트명 확인:
-<code>cta_click</code>, <code>click</code>, <code>file_download</code>, 
+<p>GA4 실시간 › 디버그뷰에서 이벤트명 확인:
+<code>cta_click</code>, <code>click</code>, <code>file_download</code>,
 <code>click_outbound</code>, <code>form_start</code>, <code>form_submit</code>
 </p>
+
+<script>
+  // 페이지 로드 후 GA4 디버그 모드 켜기 시도
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      if (window.__ga4_debug) window.__ga4_debug(true);
+    }, 600);
+  });
+  // 수동 토글 버튼
+  document.getElementById('enable-debug').addEventListener('click', function(){
+    if (window.__ga4_debug) window.__ga4_debug(true);
+  });
+</script>
