@@ -18,6 +18,7 @@ defaults:
       path: ""
     values:
       sitemap: true
+      image: /assets/og.png   # OG/Twitter 기본 이미지
 
 exclude:
   - README.md
