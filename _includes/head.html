@@ -25,14 +25,19 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
   
-    <!-- Google Analytics -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BB7PYJSNK6"></script>
+    {% seo %}
+
+    <!-- GA4 base loader -->
+    {% if site.google_analytics and site.google_analytics != "G-XXXXXXX" %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-BB7PYJSNK6');
+      gtag('config', '{{ site.google_analytics }}', { send_page_view: true });
     </script>
-  </head>
-  
+    {% endif %}
+
+    <!-- GA4 event bindings -->
+    <script defer src="{{ '/assets/ga-events.js' | relative_url }}"></script>
+</head>
