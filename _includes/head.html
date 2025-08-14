@@ -3,7 +3,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   
     <link rel="icon" href="{{ '/cividraw_logo.ico' | relative_url }}">
-  
     <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
   
@@ -21,5 +20,14 @@
     <meta name="twitter:image" content="{{ page.image | default: site.image | absolute_url }}">
   
     {%- seo -%}
+  
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B8PYJ5NK6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B8PYJ5NK6', { 'anonymize_ip': true });
+    </script>
   </head>
   
