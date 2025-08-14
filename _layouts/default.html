@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ page.title }} | {{ site.title }}</title>
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CiviDraw - 토목 설계 자동화 도구">
+  <link rel="icon" href="/cividraw_logo.ico">
+  <link rel="stylesheet" href="/assets/custom.css">
+  {% seo %}
 
-    {% seo %}
-
-    <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
-    <link rel="icon" href="{{ '/cividraw_logo.ico' | relative_url }}" type="image/x-icon" />
-  </head>
-  <body>
-    {% include header.html %}
-
-    <main class="container">
-      {{ content }}
-    </main>
-
-    <footer>
-      <p>© 2025 CiviDraw</p>
-    </footer>
-
-    {% if site.google_analytics %}
-      {% include google-analytics.html %}
-    {% endif %}
-  </body>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BB7PYJSNK6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-BB7PYJSNK6');
+  </script>
+</head>
+<body>
+  {% include header.html %}
+  <main class="container">
+    {{ content }}
+  </main>
+  <footer>
+    <p>© 2025 CiviDraw</p>
+  </footer>
+</body>
 </html>
