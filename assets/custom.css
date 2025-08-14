@@ -1,17 +1,51 @@
-:root{--brand:#007ACC;--fg:#222}
-body{color:var(--fg)}
-h1,h2{color:var(--brand)}
-.hero{text-align:center;padding:48px 0}
+:root {
+    --brand: #007ACC; /* 브랜드 색상 */
+}
 
-/* dark header bar */
-.site-header{background:#0f172a;border-top:0;border-bottom:1px solid #0b1220}
-.site-title, .site-title:visited, .site-nav .page-link{color:#fff !important}
-.site-nav .page-link:hover{color:#93c5fd !important}
-.site-title img{height:24px;vertical-align:middle;margin-right:8px}
+body {
+    color: var(--fg);
+}
 
-/* logo patch on white bg */
-.site-title img{
-    height:24px;vertical-align:middle;margin-right:8px;
-    background:#0f172a;border-radius:4px;padding:2px;
-  }
-  
+h1, h2 {
+    color: var(--brand);
+}
+
+.hero {
+    text-align: center;
+    padding: 48px 0;
+}
+
+/* ===== Dark Header Bar ===== */
+.site-header {
+    background: #0f172a;
+    border-top: 0;
+    border-bottom: 1px solid #0b1220;
+}
+
+.site-title,
+.site-title:visited,
+.site-nav .page-link {
+    color: #fff !important;
+}
+
+.site-nav .page-link:hover {
+    color: #93c5fd !important;
+}
+
+/* ===== Logo in Site Title ===== */
+.site-title img {
+    height: 28px;                /* 로고 크기 증가 */
+    vertical-align: middle;
+    margin-right: 10px;
+    background: #0f172a;         /* 어두운 배경 */
+    border-radius: 6px;          /* 둥근 모서리 */
+    padding: 4px 6px;            /* 여백 */
+}
+
+/* ===== Responsive Fix ===== */
+@media (max-width: 600px) {
+    .site-title img {
+        height: 24px;
+        padding: 3px 5px;
+    }
+}
