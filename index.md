@@ -1,21 +1,13 @@
----
-layout: default
+﻿---
+layout: page
 title: CiviDraw
+permalink: /
 ---
 
-<link rel="icon" href="/assets/favicon.ico">
-<link rel="stylesheet" href="/assets/custom.css">
+# CiviDraw
+토목 설계 자동화를 위한 CAD · Excel · HWP 솔루션
 
-<div class="hero">
-  <h1>CiviDraw</h1>
-  <p>토목 설계 자동화를 위한 CAD · Excel · HWP 솔루션</p>
-  <p class="cta">
-    <a href="/install/">설치</a> ·
-    <a href="/features/">기능</a> ·
-    <a href="/pricing/">가격</a> ·
-    <a href="mailto:you@example.com">문의</a>
-  </p>
-</div>
+[설치 안내](/install/) · [기능](/features/) · [가격](/pricing/)
 
 ## 주요 기능
 - CAD 표준화 자동화

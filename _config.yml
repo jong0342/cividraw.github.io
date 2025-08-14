@@ -1,10 +1,11 @@
-title: CiviDraw
-description: 토목 설계 자동화 CAD/Excel 솔루션
-theme: jekyll-theme-cayman
+﻿title: CiviDraw
+description: 토목 설계 자동화 CAD/Excel/HWP 솔루션
+theme: minima
 url: https://jong0342.github.io
-baseurl: ""        # username.github.io면 빈 값
-author: jong0342
+baseurl: ""
 lang: ko
-plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
+header_pages:
+  - index.md
+  - docs/install.md
+  - docs/features.md
+  - docs/pricing.md
