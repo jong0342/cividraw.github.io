@@ -4,8 +4,8 @@ layout: default
 ---
 
 <div class="cta-row">
-  <a href="https://github.com/jong0342/jong0342.github.io/archive/refs/heads/main.zip">다운로드</a>
-  <a href="mailto:you@example.com">문의 메일</a>
+  <a class="btn btn-primary" href="https://github.com/jong0342/jong0342.github.io/archive/refs/heads/main.zip">다운로드</a>
+  <a class="btn btn-ghost" href="mailto:you@example.com">문의 메일</a>
 </div>
 
 토목 설계 자동화를 위한 CAD · Excel · HWP 솔루션.

@@ -1,19 +1,50 @@
-/* 레이아웃 */
-.container { max-width: 980px; margin: 0 auto; padding: 24px 16px; }
-
-/* 헤더 */
-.site-header { background:#0f2339; color:#fff; }
-.site-header a { color:#fff; text-decoration:none; }
-
-/* CTA 버튼 */
-.cta-row { margin: 12px 0 20px; display:flex; gap:12px; flex-wrap:wrap; }
-.cta-row a { display:inline-block; padding:10px 14px; border:1px solid #0f2339; border-radius:6px; }
-.cta-row a:first-child { background:#0f2339; color:#fff; }
-.cta-row a:hover { opacity:.9; }
-
-/* 본문 */
-.content h1 { margin-top: 8px; }
-.content p, .content li { line-height:1.7; }
-
-/* 푸터 */
-.site-footer { border-top:1px solid #eee; padding:20px 0; color:#666; font-size:14px; }
+/* ===== Base ===== */
+:root{
+    --ink:#0f2339;        /* 네이비 */
+    --ink-2:#152b4b;
+    --text:#111;
+    --muted:#666;
+    --line:#e5e7eb;
+    --bg:#fff;
+    --btn:#0f2339;
+    --btn-hover:#0d1f32;
+    --btn-ghost:#eef2f7;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,AppleSDGothicNeo,"Noto Sans KR",sans-serif;color:var(--text);background:var(--bg)}
+  
+  /* ===== Layout ===== */
+  .container{max-width:980px;margin:0 auto;padding:24px 16px}
+  .content h1{margin:18px 0 8px}
+  .content p,.content li{line-height:1.75}
+  
+  /* ===== Header ===== */
+  .site-header{background:var(--ink);color:#fff}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:56px;padding-top:0;padding-bottom:0}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700}
+  .nav{display:flex;gap:18px}
+  .nav a{color:#fff;text-decoration:none;opacity:.9}
+  .nav a:hover{opacity:1}
+  
+  /* ===== CTA Buttons ===== */
+  .cta-row{margin:12px 0 22px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none;border:1px solid transparent}
+  .btn-primary{background:var(--btn);color:#fff;border-color:var(--btn)}
+  .btn-primary:hover{background:var(--btn-hover);border-color:var(--btn-hover)}
+  .btn-ghost{background:var(--btn-ghost);color:var(--ink);border-color:var(--btn-ghost)}
+  .btn-ghost:hover{filter:brightness(.97)}
+  
+  /* ===== Footer ===== */
+  .site-footer{border-top:1px solid var(--line);padding:20px 0;color:var(--muted);font-size:14px}
+  
+  /* ===== Lists spacing ===== */
+  ul{padding-left:18px}
+  h2{margin-top:28px}
+  
+  /* ===== Mobile ===== */
+  @media (max-width:640px){
+    .header-inner{height:auto;gap:12px;flex-wrap:wrap}
+    .nav{width:100%;justify-content:flex-start}
+  }
+  

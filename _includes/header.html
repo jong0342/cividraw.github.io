@@ -1,16 +1,13 @@
 <header class="site-header">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:48px;">
-      <a href="{{ '/' | relative_url }}" class="brand" style="display:flex;align-items:center;gap:8px;">
+    <div class="container header-inner">
+      <a href="{{ '/' | relative_url }}" class="brand">
         <img src="{{ '/cividraw_logo.ico' | relative_url }}" alt="CiviDraw" width="20" height="20">
-        <strong>CiviDraw</strong>
+        <span>CiviDraw</span>
       </a>
-      <nav>
-        <ul style="display:flex;gap:16px;list-style:none;margin:0;padding:0;">
-          <li><a href="{{ '/docs/features' | relative_url }}">기능</a></li>
-          <li><a href="{{ '/docs/install' | relative_url }}">설치 안내</a></li>
-          <li><a href="{{ '/docs/pricing' | relative_url }}">가격</a></li>
-          <li><a href="{{ '/' | relative_url }}">CiviDraw</a></li>
-        </ul>
+      <nav class="nav">
+        <a href="{{ '/docs/features' | relative_url }}">기능</a>
+        <a href="{{ '/docs/install' | relative_url }}">설치 안내</a>
+        <a href="{{ '/docs/pricing' | relative_url }}">가격</a>
       </nav>
     </div>
   </header>
