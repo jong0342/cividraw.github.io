@@ -18,7 +18,7 @@ defaults:
       path: ""
     values:
       sitemap: true
-      image: /assets/og.png
+      image: https://jong0342.github.io/assets/og.png  # ← 절대경로로 수정
 
 exclude:
   - README.md
@@ -27,4 +27,5 @@ exclude:
   - Gemfile
   - Gemfile.lock
 
+# Google Analytics 측정 ID
 google_analytics: G-BB7PYJSNK6

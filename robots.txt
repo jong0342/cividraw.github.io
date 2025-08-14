@@ -1,3 +1,4 @@
 User-agent: *
-Allow: /
+Disallow:
+
 Sitemap: https://jong0342.github.io/sitemap.xml
