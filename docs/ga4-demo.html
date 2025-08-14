@@ -1,0 +1,34 @@
+---
+layout: default
+title: GA4 Demo
+permalink: /ga4-demo/
+description: GA4 이벤트 추적 테스트 페이지
+---
+
+<h1>GA4 이벤트 추적 데모</h1>
+
+<!-- 1. 명시적 이벤트 버튼 -->
+<button id="cta-install"
+        data-ga4-event="cta_click"
+        data-ga4-label="Install CTA">
+  설치하기 버튼 (명시적 이벤트)
+</button>
+
+<!-- 2. 일반 버튼 -->
+<button>기본 버튼 (자동 click 이벤트)</button>
+
+<!-- 3. 파일 다운로드 -->
+<p><a href="/assets/brochure.pdf">브로셔 다운로드 (file_download)</a></p>
+
+<!-- 4. 아웃바운드 링크 -->
+<p><a href="https://example.com">외부 사이트 이동 (click_outbound)</a></p>
+
+<!-- 5. 폼 시작 및 제출 -->
+<form id="contact" name="ContactForm" action="/thanks" method="post">
+  <label>이메일: <input type="email" name="email" required></label>
+  <button type="submit">문의 보내기</button>
+</form>
+
+<hr>
+<p>GA4 실시간 > 디버그뷰에서 이벤트명:  
+<code>cta_click</code>, <code>click</code>, <code>file_download</code>, <code>click_outbound</code>, <code>form_start</code>, <code>form_submit</code> 확인</p>

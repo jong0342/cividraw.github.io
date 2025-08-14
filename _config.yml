@@ -18,7 +18,7 @@ defaults:
       path: ""
     values:
       sitemap: true
-      image: /assets/og.png   # OG/Twitter 기본 이미지
+      image: /assets/og.png
 
 exclude:
   - README.md
@@ -26,3 +26,6 @@ exclude:
   - vendor
   - Gemfile
   - Gemfile.lock
+
+# Google Analytics 측정 ID (예: G-XXXXXXX)
+google_analytics: G-BB7PYJSNK6

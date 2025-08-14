@@ -1,0 +1,26 @@
+---
+layout: default
+title: GA4 Demo
+permalink: /demo/
+---
+
+<h1>GA4 Demo</h1>
+
+<!-- 버튼: 명시적 이벤트 이름과 라벨 -->
+<button id="cta-install"
+        data-ga4-event="cta_click"
+        data-ga4-label="Install CTA">
+  설치하기
+</button>
+
+<!-- 파일 다운로드: 확장자 자동 감지 -->
+<p><a href="/assets/brochure.pdf">브로셔 다운로드</a></p>
+
+<!-- 아웃바운드 링크: 자동 추적 -->
+<p><a href="https://example.com">파트너 사이트 방문</a></p>
+
+<!-- 폼: 시작/제출 자동 추적 -->
+<form id="contact" name="ContactForm" action="/thanks" method="post">
+  <label>Email <input type="email" name="email" required></label>
+  <button type="submit">문의 보내기</button>
+</form>
