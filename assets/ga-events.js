@@ -1,12 +1,11 @@
 (function(){
   const GA_ENABLED = typeof window.gtag === 'function';
   const FILE_EXTS = ['pdf','doc','docx','xls','xlsx','ppt','pptx','zip','rar','7z','csv','txt','jpg','jpeg','png','gif','webp','svg','mp3','mp4','mov','avi','mkv','dwg','dxf'];
-  function log(){ try{ console.log.apply(console, arguments); }catch(_){} }
+
   function sendEvent(name, params){
     if (!GA_ENABLED) return;
-    const payload = Object.assign({ debug_mode: true }, params || {}); // DebugView 강제
-    log('[GA4] event →', name, payload);
-    window.gtag('event', name, payload);
+    // 운영: debug_mode 주입 안 함. (디버그 시 콘솔에서 __ga4_debug(true))
+    window.gtag('event', name, params || {});
   }
   function closestAttr(el, attr){
     while (el && el !== document){
@@ -19,16 +18,7 @@
     try{ const m = new URL(href, location.href).pathname.toLowerCase().match(/\.([a-z0-9]+)$/); return m?m[1]:''; }catch{ return ''; }
   }
 
-  // 디버그 버튼
-  window.addEventListener('DOMContentLoaded', function(){
-    const dbg = document.getElementById('enable-debug');
-    if (dbg) dbg.addEventListener('click', function(){
-      if (window.__ga4_debug) window.__ga4_debug(true);
-      sendEvent('debug_toggle', { label: 'enable_debug', location: location.pathname });
-    });
-  });
-
-  // 버튼 클릭
+  // 명시적/일반 버튼
   document.addEventListener('click', function(e){
     const t = e.target;
     const explicit = closestAttr(t, 'data-ga4-event');
@@ -36,7 +26,6 @@
       sendEvent(explicit, {
         label: closestAttr(t, 'data-ga4-label') || (t.innerText || '').trim().slice(0,100),
         category: closestAttr(t, 'data-ga4-category') || 'ui',
-        location: location.pathname
       });
       return;
     }
@@ -45,7 +34,6 @@
       sendEvent('click', {
         label: (btn.getAttribute('aria-label') || btn.innerText || btn.name || btn.id || 'button').trim().slice(0,100),
         category: 'button',
-        location: location.pathname
       });
     }
   }, { capture: true });
@@ -60,7 +48,7 @@
     if (!ext || !FILE_EXTS.includes(ext)) return;
     let url; try{ url = new URL(href, location.href);}catch{ return; }
     const fileName = url.pathname.split('/').pop() || '(unknown)';
-    sendEvent('file_download', { file_name: fileName, file_extension: ext, link_url: url.href, location: location.pathname });
+    sendEvent('file_download', { file_name: fileName, file_extension: ext, link_url: url.href });
   }, { capture: true });
 
   // 외부 링크
@@ -71,7 +59,7 @@
     if (!href || href.startsWith('#')) return;
     let url; try{ url = new URL(href, location.href);}catch{ return; }
     if (url.origin === location.origin) return;
-    sendEvent('click_outbound', { link_url: url.href, link_host: url.host, location: location.pathname });
+    sendEvent('click_outbound', { link_url: url.href, link_host: url.host });
   }, { capture: true });
 
   // 폼 시작/제출
@@ -80,16 +68,15 @@
     const form = e.target && e.target.form;
     if (!form || formStarted.has(form)) return;
     formStarted.add(form);
-    sendEvent('form_start', { form_id: form.id || '(no-id)', form_name: form.getAttribute('name') || '(no-name)', location: location.pathname });
+    sendEvent('form_start', { form_id: form.id || '(no-id)', form_name: form.getAttribute('name') || '(no-name)' });
   }, { capture: true });
+
   document.addEventListener('submit', function(e){
     const form = e.target;
     sendEvent('form_submit', {
       form_id: form.id || '(no-id)',
       form_name: form.getAttribute('name') || '(no-name)',
       form_action: form.getAttribute('action') || '(no-action)',
-      location: location.pathname
     });
-    if (form.getAttribute('data-demo') === '1') e.preventDefault();
   }, { capture: true });
 })();

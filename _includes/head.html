@@ -19,7 +19,6 @@
 
   <link rel="icon" href="{{ '/cividraw_logo.ico' | relative_url }}" type="image/x-icon">
   <link rel="stylesheet" href="{{ '/assets/custom.css' | relative_url }}">
-
   {% seo %}
 
   {% if site.google_analytics and site.google_analytics != "G-XXXXXXX" %}
@@ -28,15 +27,13 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
+    // 운영: debug_mode 기본 OFF
+    gtag('config', '{{ site.google_analytics }}', { send_page_view: true });
 
+    // 필요 시 수동 토글(콘솔에서 __ga4_debug(true))
     (function(){
-      var qs = new URLSearchParams(location.search);
-      var debugOn = qs.get('debug') === '1' || localStorage.getItem('ga4_debug') === '1';
-      gtag('config', '{{ site.google_analytics }}', { send_page_view: true, debug_mode: !!debugOn });
-      if (debugOn) console.log('GA4 debug_mode = true');
       window.__ga4_debug = function(on){
         gtag('set', 'debug_mode', !!on);
-        if(on){ localStorage.setItem('ga4_debug','1'); } else { localStorage.removeItem('ga4_debug'); }
         console.log('GA4 debug_mode =', !!on);
       };
     })();
